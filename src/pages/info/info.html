@@ -1,0 +1,57 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Producto</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding style="background-color:#8DA1B9">
+    <ion-card>
+        <ion-item>
+            <ion-avatar item-start>
+              <img src="../assets/imgs/user.png">
+            </ion-avatar>
+            <h2 *ngIf = "video.ad.hasOwnProperty ('user')">
+                {{video.ad.user.account.name}}
+            </h2>
+          </ion-item>
+
+        <ion-slides pager>
+          <ion-slide *ngFor= "let img of imgs">
+            <img src= "https://img.segundamano.mx/medium/{{img.path}}">
+          </ion-slide>
+        </ion-slides>
+      </ion-card>
+    <ion-card> 
+      <ion-card-content>
+        <ion-item>
+          <ion-icon name="game-controller-b" item-start></ion-icon>
+          <h4 *ngIf= "video.ad.hasOwnProperty ('category')">
+              Categoría: {{video.ad.category.label}}
+          </h4>
+        </ion-item>
+        <ion-item>
+          <ion-icon *ngIf = "!fav.existe(video)" name= "heart" item-end (click) = "favoritos(video)"></ion-icon>
+          <ion-icon *ngIf = "fav.existe(video)" name= "heart" color = "danger" item-end (click)="fav.remover (video)"></ion-icon>
+        </ion-item>
+        <ion-item>
+            <ion-icon name="logo-usd" item-start></ion-icon>
+            <h3 *ngIf= "video.ad.hasOwnProperty ('list_price')">
+              Precio: {{video.ad.list_price.label}}
+            </h3>
+        </ion-item>
+        <h1 >
+            
+        </h1>
+
+
+        <h1 *ngIf= "video.ad.hasOwnProperty ('body')" >
+            Descripcion:
+        </h1>
+        <h2 *ngIf= "video.ad.hasOwnProperty ('body')" >
+          {{video.ad.body}}
+        </h2>
+      
+      </ion-card-content>
+    </ion-card>
+</ion-content>
+

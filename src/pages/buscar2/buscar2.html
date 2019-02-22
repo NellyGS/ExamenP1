@@ -1,0 +1,26 @@
+
+<ion-header>
+  <ion-navbar>
+    <ion-title>Busqueda</ion-title>
+  </ion-navbar>
+  <ion-searchbar (ionInput)= "getItems($event)"></ion-searchbar>
+  
+</ion-header>
+
+<ion-content padding>
+  <ion-list>
+    <ion-item *ngFor = "let electronico of items">
+      <ion-thumbnail item-start>
+        <img *ngIf = "electronico.ad.hasOwnProperty ('thumbnail')" src = "https://img.segundamano.mx/cover/{{electronico.ad.thumbnail.path}}">
+      </ion-thumbnail>
+      <h2 *ngIf= "electronico.ad.hasOwnProperty ('subject')">
+          {{electronico.ad.subject}}
+      </h2>
+      <p *ngIf= "electronico.ad.hasOwnProperty ('list_price')"> 
+          {{electronico.ad.list_price.label}}
+      </p>
+      <button ion-button clear item-end (click)= "verElectronico (electronico)">Ver</button>
+    </ion-item>
+  </ion-list>
+</ion-content>
+
